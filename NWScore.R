@@ -1,21 +1,21 @@
-NWScore <- function(sek1,sek2,match,mismatch,gap){
-  m <- 1+length(sek1)
-  n <- 1+length(sek2)
-  S <- (0:(n-1))*gap
-  #print(S)
-  for (i in 2:m){
-    s <- S[1]
-    c <- S[1]+gap
-    S[1] <- c
-    for (j in 2:n){
-      if (sek1[i-1]==sek2[j-1]){pom <- match} else {pom <- mismatch}
-      c <- max(c(S[j]+gap, c+gap, s+pom))
-      s <- S[j]
-      S[j] <- c
-    }
-    #print(S)
-  }
-  return(S)
+x<- string('A''C''C''T''G''G''A''C')
+y<- 'GGTACCAT'
+sek1<-x
+sek2<-y
+match<- 4
+gap<--1
+mismatch<--3
+
+mat<- matrix(0,length(sek1)+1,length(sek2))
+r <-dim(mat)
+
+for (i in 1:r[1]){
+mat[1,i+1]=gap*i
 }
 
+for (i in 1:r[2]){
+  mat[i+1,1]=gap*i
+}
+S<-NWScore(x,y,4,-3,-1)
 
+S <- matrix(0, length(x),length(y))
